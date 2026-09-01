@@ -4,6 +4,8 @@ title: Realtime Monitoring
 permalink: /monitoring/
 ---
 
+<link rel="stylesheet" href="{{ '/assets/monitoring.css' | relative_url }}">
+
 <div class="monitor-page" data-monitoring-app>
   <section class="monitor-hero">
     <div>
