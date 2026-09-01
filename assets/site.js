@@ -9,6 +9,54 @@ document.addEventListener('DOMContentLoaded',()=>{
     cards.forEach(c=>{c.classList.add('reveal-card');io.observe(c)});
   }else{cards.forEach(c=>c.classList.add('is-visible'))}
 
+  if(path==='/projects'){
+    const colony=cards.find(c=>c.textContent.includes('Automated Colony Detection'));
+    if(colony&&!colony.querySelector('.colony-visuals')){
+      const note=colony.querySelector('.research-note');
+      const block=document.createElement('section');
+      block.className='colony-visuals';
+      block.innerHTML=`
+        <div class="colony-visuals__head"><span>Annotated zones</span><strong>Plate geometry + scientist review</strong></div>
+        <div class="colony-visuals__grid">
+          <figure class="colony-visual">
+            <div class="colony-visual__plate" aria-label="Diagram of inner and outer assay zones">
+              <svg viewBox="0 0 320 320" role="img" aria-labelledby="zone-title zone-desc">
+                <title id="zone-title">Assay zone geometry</title><desc id="zone-desc">Petri plate with central antibiotic disk, inner Zone A and outer Zone B.</desc>
+                <circle class="plate-bg" cx="160" cy="160" r="138"/>
+                <circle class="zone-b" cx="160" cy="160" r="118"/>
+                <circle class="zone-a" cx="160" cy="160" r="70"/>
+                <circle class="disk" cx="160" cy="160" r="15"/>
+                <line x1="160" y1="160" x2="230" y2="160" class="measure-a"/>
+                <line x1="160" y1="160" x2="278" y2="160" class="measure-b"/>
+                <text x="174" y="147" class="svg-label svg-label--a">A · inner region</text>
+                <text x="220" y="107" class="svg-label svg-label--b">B · outer region</text>
+                <text x="160" y="165" text-anchor="middle" class="svg-disk">6 mm</text>
+              </svg>
+            </div>
+            <figcaption><strong>Zone geometry</strong><span>Zone A measures the inner assay region from the disk center. Zone B captures the surrounding outer region. The 6 mm paper disk provides the physical calibration reference.</span></figcaption>
+          </figure>
+          <figure class="colony-visual">
+            <div class="colony-visual__plate" aria-label="Diagram of colony annotations">
+              <svg viewBox="0 0 320 320" role="img" aria-labelledby="ann-title ann-desc">
+                <title id="ann-title">Colony annotations</title><desc id="ann-desc">Petri plate with green primary detections and yellow secondary or uncertain detections.</desc>
+                <circle class="plate-bg" cx="160" cy="160" r="138"/>
+                <circle class="zone-b" cx="160" cy="160" r="118"/>
+                <circle class="zone-a" cx="160" cy="160" r="70"/>
+                <circle class="disk" cx="160" cy="160" r="15"/>
+                <g class="primary-marks"><circle cx="98" cy="112" r="8"/><circle cx="129" cy="92" r="7"/><circle cx="189" cy="104" r="9"/><circle cx="220" cy="130" r="6"/><circle cx="114" cy="188" r="8"/><circle cx="196" cy="198" r="7"/><circle cx="245" cy="188" r="8"/><circle cx="84" cy="218" r="6"/><circle cx="228" cy="232" r="7"/></g>
+                <g class="secondary-marks"><circle cx="142" cy="124" r="6"/><circle cx="205" cy="157" r="7"/><circle cx="148" cy="219" r="8"/><circle cx="255" cy="105" r="6"/></g>
+                <path d="M76 260h14" class="legend-green"/><text x="96" y="264" class="svg-legend">primary detection</text>
+                <path d="M188 260h14" class="legend-yellow"/><text x="208" y="264" class="svg-legend">secondary / uncertain</text>
+              </svg>
+            </div>
+            <figcaption><strong>Annotation review</strong><span>Green circles represent primary colony detections used for counting. Yellow circles flag secondary or uncertain candidates for scientist review before they become annotation and training checkpoints.</span></figcaption>
+          </figure>
+        </div>
+        <div class="colony-visuals__legend"><span><i class="zone-a-key"></i><strong>Zone A</strong> inner analysis region</span><span><i class="zone-b-key"></i><strong>Zone B</strong> outer analysis region</span><span><i class="colony-primary-key"></i><strong>Green</strong> accepted/primary colony</span><span><i class="colony-secondary-key"></i><strong>Yellow</strong> secondary or uncertain colony</span></div>`;
+      if(note)note.before(block);else colony.querySelector('.project-card__body').appendChild(block);
+    }
+  }
+
   const demo=document.querySelector('[data-lab-demo]');
   if(demo){
     const sample=demo.querySelector('[data-demo-sample]');
