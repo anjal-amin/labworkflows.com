@@ -19,6 +19,8 @@ Human error is a common challenge in lab environments. Automation helps mitigate
 
 Even elementary measurements become more useful when they are captured in a consistent structure instead of remaining isolated on a local instrument or handwritten sheet. In this interactive example, a Raspberry Pi represents the edge device: it receives a value, applies a simple rule to a status light, and sends the same structured record to a centralized data layer.
 
+<link rel="stylesheet" href="{{ '/assets/lab-demo.css' | relative_url }}">
+
 <div class="lab-demo" data-lab-demo>
   <div class="lab-demo__controls">
     <div class="lab-demo__field">
