@@ -12,6 +12,62 @@ permalink: /projects/
   </header>
 
   <div class="project-grid">
+    <section class="project-card project-card--research">
+      <div class="project-card__header">
+        <div>
+          <div class="project-status"><span class="project-status__dot"></span>Active development · Validation stage</div>
+          <h2>6. Automated Colony Detection &amp; Antibiotic Plate Analysis</h2>
+        </div>
+        <span class="project-card__number">06</span>
+      </div>
+      <div class="project-card__body">
+        <p>A computer-vision workflow for detecting and counting bacterial colonies on antibiotic diffusion assay plates, measuring spatial regions around the antibiotic disk, and preserving scientist review as part of the analytical process.</p>
+
+        <div class="research-summary">
+          <div class="research-summary__item"><span class="research-summary__label">Current stage</span><strong>Prototype validation</strong><span>Detection, review, annotation, training, and model-promotion workflows are being integrated and tested.</span></div>
+          <div class="research-summary__item"><span class="research-summary__label">Primary objective</span><strong>Reproducible colony quantification</strong><span>Reduce manual counting while retaining traceability and scientist control over ambiguous detections.</span></div>
+          <div class="research-summary__item"><span class="research-summary__label">Scientific constraint</span><strong>Human-in-the-loop</strong><span>Automated predictions are treated as candidates until reviewed or accepted by a scientist.</span></div>
+        </div>
+
+        <div class="research-pipeline" aria-label="Colony detection research workflow">
+          <div class="research-step"><span>01</span><strong>Acquire</strong><small>Plate image</small></div>
+          <div class="research-arrow" aria-hidden="true">→</div>
+          <div class="research-step"><span>02</span><strong>Detect</strong><small>Candidate colonies</small></div>
+          <div class="research-arrow" aria-hidden="true">→</div>
+          <div class="research-step"><span>03</span><strong>Review</strong><small>Scientist corrections</small></div>
+          <div class="research-arrow" aria-hidden="true">→</div>
+          <div class="research-step"><span>04</span><strong>Train</strong><small>Curated annotations</small></div>
+          <div class="research-arrow" aria-hidden="true">→</div>
+          <div class="research-step"><span>05</span><strong>Validate</strong><small>Compare performance</small></div>
+        </div>
+
+        <h3>Current experimental workflow</h3>
+        <ul>
+          <li>Detect colony candidates from uploaded plate images, including difficult small, overlapping, and low-contrast colonies.</li>
+          <li>Separate measurements into defined inner and outer assay regions using a consistent plate-centered spatial rule.</li>
+          <li>Use a 6 mm antibiotic paper disk as the physical reference for converting image-space radius measurements into millimeters.</li>
+          <li>Present automated detections to the scientist for correction before they become annotation or training checkpoints.</li>
+          <li>Save reviewed examples into selectable computer-vision profiles that can be used to train subsequent models.</li>
+          <li>Keep newly trained models separate from production use until explicitly promoted, preserving the distinction between an experiment and an accepted model.</li>
+          <li>Export counts and associated metadata even when a model has not yet been promoted.</li>
+        </ul>
+
+        <h3>What is being evaluated</h3>
+        <div class="research-metrics">
+          <div><span>Detection</span><strong>Missed colonies vs. false positives</strong></div>
+          <div><span>Morphology</span><strong>Small and overlapping colonies</strong></div>
+          <div><span>Geometry</span><strong>Plate center and region consistency</strong></div>
+          <div><span>Measurement</span><strong>Pixel-to-mm reproducibility</strong></div>
+          <div><span>Modeling</span><strong>Training-set quality and model versioning</strong></div>
+          <div><span>Workflow</span><strong>Scientist review efficiency</strong></div>
+        </div>
+
+        <div class="research-note">
+          <strong>Scientific status:</strong> The system is currently a methods-development and validation platform. It is not presented as a finalized microbiology assay or autonomous result-producing instrument. The immediate goal is to establish a repeatable annotated dataset, quantify model performance against scientist-reviewed plates, and determine when a trained model is sufficiently reliable to promote for routine use.
+        </div>
+      </div>
+    </section>
+
     <section class="project-card">
       <div class="project-card__header"><h2>5. Flow-Meter Addition to Dinoflagellate Sampler</h2><span class="project-card__number">05</span></div>
       <div class="project-card__body">
