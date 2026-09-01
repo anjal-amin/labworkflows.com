@@ -1,8 +1,9 @@
 ---
 layout: default
+permalink: /index.html
 ---
 
-<link rel="stylesheet" href="{{ '/assets/home-dashboard.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/home-dashboard.css?v=20260901-1' | relative_url }}">
 
 <div class="home-dashboard">
   <section class="home-hero">
