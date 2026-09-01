@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded',()=>{
+  const path=window.location.pathname.replace(/\/+$/,'')||'/';
+  if(path==='/about')document.body.classList.add('page-about');
+  if(path==='/projects')document.body.classList.add('page-projects');
+
   const cards=[...document.querySelectorAll('.project-card')];
   if('IntersectionObserver'in window){
     const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-visible');io.unobserve(e.target)}})},{threshold:.12});
