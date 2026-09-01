@@ -73,3 +73,5 @@ permalink: /about/
     <p>For more information or to discuss potential collaborations, please contact us at <a href="mailto:info@labworkflows.com">info@labworkflows.com</a>.</p>
   </section>
 </div>
+
+<script src="{{ '/assets/site.js' | relative_url }}" defer></script>
